@@ -1,13 +1,13 @@
-package com.geekbrains.balyanova.spring.web.model;
+package com.geekbrains.balyanova.spring.web.data;
 
 public class Product {
     private Long id;
     private String title;
-    private double cost;
+    private Integer cost;
 
     public Product(){}
 
-    public Product(Long id, String title, double cost) {
+    public Product(Long id, String title, Integer cost) {
         this.id = id;
         this.title = title;
         this.cost = cost;
@@ -27,9 +27,9 @@ public class Product {
         this.title = title;
     }
 
-    public double getCost() { return cost; }
+    public Integer getCost() { return cost; }
 
-    public void setCost(double cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 }
