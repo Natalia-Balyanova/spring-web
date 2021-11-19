@@ -1,6 +1,6 @@
 package com.geekbrains.balyanova.spring.web.repositories;
 
-import com.geekbrains.balyanova.spring.web.model.Product;
+import com.geekbrains.balyanova.spring.web.data.Product;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,10 +13,6 @@ import java.util.List;
 public class ProductRepository {
     private List<Product> products;
 
-    public List<Product> getAllProducts() {
-        return Collections.unmodifiableList(products);
-    }
-
     @PostConstruct
     public void init() {
         products = new ArrayList<>(Arrays.asList(
@@ -25,12 +21,21 @@ public class ProductRepository {
                 new Product(3L, "Apple", 100),
                 new Product(4L, "Milk", 70),
                 new Product(5L, "Eggs", 100)
-        ));}
+        ));
+    }
+
+    public List<Product> getAllProducts() {
+        return Collections.unmodifiableList(products);
+    }
 
     public Product findProductById(Long id) {
         return products.stream().
-                filter(s -> s.getId().equals(id)).
-                findFirst().
-                orElseThrow(() -> new RuntimeException("Product not found"));
+                filter(p -> p.getId().equals(id)).
+                findFirst().get();
+    }
+
+    public void deleteById(Long id) {
+        products.removeIf(p -> p.getId().equals(id));
     }
 }
+

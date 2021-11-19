@@ -1,32 +1,32 @@
 package com.geekbrains.balyanova.spring.web.controllers;
 
-import com.geekbrains.balyanova.spring.web.model.Product;
+import com.geekbrains.balyanova.spring.web.data.Product;
 import com.geekbrains.balyanova.spring.web.repositories.ProductRepository;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.geekbrains.balyanova.spring.web.services.ProductService;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class ProductController {
-    private ProductRepository productRepository;
+    private ProductService productService;
 
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping("/products")
-    public String showStudentsPage(Model model) {
-        model.addAttribute("products", productRepository.getAllProducts());
-        return "products_page";
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
-    @GetMapping("/products/{id}")
-    public String showProductsPage(Model model, @PathVariable Long id) {
-        Product product = productRepository.findProductById(id);
-        model.addAttribute("product", product);
-        return "product_info_page";
+    @GetMapping("/products/delete/{id}")
+    public void deleteById(@PathVariable Long id) {
+        productService.deleteById(id);
     }
 
+    @GetMapping("/products/change_cost")
+    public void changeCost(@RequestParam Long productId, @RequestParam Integer delta) {
+        productService.changeCost(productId, delta);
+    }
 }
