@@ -1,6 +1,6 @@
 package com.geekbrains.balyanova.spring.web.repositories;
 
-import com.geekbrains.balyanova.spring.web.data.Product;
+import com.geekbrains.balyanova.hibernate.h2.Product;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
