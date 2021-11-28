@@ -1,6 +1,6 @@
 package com.geekbrains.balyanova.spring.web.services;
 
-import com.geekbrains.balyanova.spring.web.data.Product;
+import com.geekbrains.balyanova.hibernate.h2.Product;
 import com.geekbrains.balyanova.spring.web.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +22,8 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    public void changeCost(Long productId, Integer delta) {
+    public void changePrice(Long productId, Integer delta) {
         Product product = productRepository.findProductById(productId);
-        product.setCost(product.getCost() + delta);
+        product.setPrice(product.getPrice() + delta);
     }
 }

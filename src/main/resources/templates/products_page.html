@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Products</title>
-</head>
-<body>
-    <h1>Products Page</h1>
-    <div th:each="p : ${products}">
-        <span th:text="${'Product: ' + p.title + ' ID: ' + p.id + ' Cost: ' + p.cost}"></span><br>
-        <a th:href="@{'/products/'+ ${p.id}}">PRODUCT INFO</a>
-    </div>
-    <hr>
-    <span th:text="${'Products count: ' + products.size()}"></span><br>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Products</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Products Page</h1>-->
+<!--    <div th:each="p : ${products}">-->
+<!--        <span th:text="${'Product: ' + p.title + ' ID: ' + p.id + ' Cost: ' + p.cost}"></span><br>-->
+<!--        <a th:href="@{'/products/'+ ${p.id}}">PRODUCT INFO</a>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <span th:text="${'Products count: ' + products.size()}"></span><br>-->
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
